@@ -14,15 +14,15 @@ public class TestMovingPieces {
     @Test
     public void testRandomMovement() {
         Drawable[] gameBoard = new Drawable[GameEngine.BOARD_SIZE];
-
+        //start with 1 and leaves 0 open
         for (int i =0; i <=5; i++){
             gameBoard[i] = new Pot();
         }
-
+        //this leaves 7 open
         for (int i =7; i <=11 i++){
             gameBoard[i] = new Pot();
         }
-
+        //this  leaves 12, 13, and 20 open while assuming player is in 13
         for (int i =14; i <=20; i++){
             gameBoard[i] = new Pot();
         }
@@ -62,6 +62,40 @@ public class TestMovingPieces {
 
 
     @Test 
-    
+	public void testKeeseMovement() {
+		Drawable[] gameBoard = new Drawable[GameEngine.BOARD_SIZE];
+		int last = GameEngine.BOARD_SIZE - 1;
+		Keese keese = new Keese(18);
+		gameBoard[18] = keese;
+ 
+		// Moves right until it reaches the end of the board
+		keese.move(gameBoard, 5);
+		assertEquals(19, keese.getLocation());
+		assertNull(gameBoard[18]);
+		assertSame(keese, gameBoard[19]);
+ 
+		keese.move(gameBoard, 5);
+		assertEquals(last, keese.getLocation());
+		assertNull(gameBoard[19]);
+		assertSame(keese, gameBoard[last]);
+ 
+		// Moves Keese left because it is at the edge of the board
+		keese.move(gameBoard, 5);
+		assertEquals(last - 1, keese.getLocation());
+		assertSame(keese, gameBoard[last - 1]);
+		assertNull(gameBoard[last]);
+ 
+		// Keeps going leftuntil it reaches 0
+		for (int i = 0; i < last - 1; i++)
+			keese.move(gameBoard, 5);
+		assertEquals(0, keese.getLocation());
+		assertSame(keese, gameBoard[0]);
+ 
+		// Moves Keese right because it is at the edge of the board
+		keese.move(gameBoard, 5);
+		assertEquals(1, keese.getLocation());
+		assertSame(keese, gameBoard[1]);
+		assertNull(gameBoard[0]);
+	}
 
 }

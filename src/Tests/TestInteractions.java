@@ -15,7 +15,7 @@ import levelPieces.Wizrobe;
 
 
 public class TestInteractions {
-
+    //Testing if Rupee give point only gives a point whenthe player is standing on it, and does nothing otherwise
     @Test
     public void TestRupees() {
         Drawable[] gameboard = new Drawable[GameEngine.BOARD_SIZE];
@@ -29,7 +29,7 @@ public class TestInteractions {
 		for (int i=11; i<GameEngine.BOARD_SIZE; i++)	
 			assertEquals(InteractionResult.NONE, rupee.interact(gameboard, i));
 	}		
-
+    //test if the Moblin only hits its own square and the squares directly adjacent to it but not anywhere else
     @Test
     public void testMoblinHits() {
         Drawable[] gameBoard = new Drawable[GameEngine.BOARD_SIZE];
@@ -45,7 +45,7 @@ public class TestInteractions {
         for (int i = 12; i < GameEngine.BOARD_SIZE; i++)
             assertEquals(InteractionResult.NONE, moblin.interact(gameBoard, i));
     }
-
+    //test if the Keese only hits its own square but not anywhere else
     @Test
     public void testKeeseHits() {
         Drawable[] gameBoard = new Drawable[GameEngine.BOARD_SIZE];
@@ -59,12 +59,12 @@ public class TestInteractions {
         for (int i = 11; i < GameEngine.BOARD_SIZE; i++)
             assertEquals(InteractionResult.NONE, keese.interact(gameBoard, i));
     }
-
+    //test if the Wizrobe only hits its own square but not anywhere else
     @Test
     public void testWizrobeHits() {
         Drawable[] gameBoard = new Drawable[GameEngine.BOARD_SIZE];
         Wizrobe wizrobe = new Wizrobe(7);
-        gameBoard[10] = wizrobe;  
+        gameBoard[7] = wizrobe;  
 
         assertEquals(InteractionResult.HIT, wizrobe.interact(gameBoard, 7));
 
@@ -73,7 +73,7 @@ public class TestInteractions {
         for (int i = 8; i < GameEngine.BOARD_SIZE; i++)
             assertEquals(InteractionResult.NONE, wizrobe.interact(gameBoard, i));
     }
-
+    //test Triforce advances the player only when the player is located on the same square as the Triforce
 	@Test
 	public void TestTriforceAdvances() {
 		Drawable[] gameBoard = new Drawable[GameEngine.BOARD_SIZE];
@@ -85,7 +85,7 @@ public class TestInteractions {
 			assertEquals(InteractionResult.NONE, triforce.interact(gameBoard, i));
 		assertEquals(InteractionResult.NONE, triforce.interact(gameBoard, 20));
 	}
-
+    //tests if Ganon kills the players on its own square and the square directly adjacent
     @Test
 	public void testGanonKills() {
 		Drawable[] gameBoard = new Drawable[GameEngine.BOARD_SIZE];
