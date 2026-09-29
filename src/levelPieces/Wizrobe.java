@@ -5,7 +5,7 @@ import gameEngine.InteractionResult;
 
 /*
  * Wizrobe teleports randomly across the board using RandomMotionPiece logic.
- * Hits the player if it lands directly on them.
+ * Hits the player if the player moves onto its square.
  */
 public class Wizrobe extends RandomMotionPiece {
 

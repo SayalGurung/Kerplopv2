@@ -8,7 +8,7 @@ import levelPieces.LevelSetup;
 /**
  * Framework for LevelGame.
  * 
- * @author Mark Baldwin
+ * @author Sayal Gurung
  * @author Cyndi Rader
  * 
  * 
