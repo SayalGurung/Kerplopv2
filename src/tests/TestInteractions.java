@@ -19,7 +19,7 @@ public class TestInteractions {
     @Test
     public void TestRupees() {
         Drawable[] gameboard = new Drawable[GameEngine.BOARD_SIZE];
-        Rupee rupee = new Rupee('R', "Rupee", 10, false);
+        Rupee rupee = new Rupee(10);
         gameboard[10] = rupee;
         
         assertEquals(InteractionResult.HIT, rupee.interact(gameboard, 10));
